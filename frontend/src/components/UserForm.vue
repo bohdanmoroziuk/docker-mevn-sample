@@ -12,11 +12,18 @@ type Emits = {
 
 const emit = defineEmits<Emits>();
 
+const resetForm = () => {
+  name.value = '';
+  age.value = '';
+};
+
 const handleSubmit = () => {
   emit('submit', {
     name: name.value,
     age: Number.parseInt(age.value, 10),
   });
+
+  resetForm();
 };
 </script>
 

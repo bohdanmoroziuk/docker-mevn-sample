@@ -3,9 +3,7 @@ import { ref, onMounted } from 'vue';
 
 import type { User, UserData } from '@/entities';
 import { useUserRepository } from '@/repositories';
-
-import UserForm from '@/components/UserForm.vue';
-import UserTable from '@/components/UserTable.vue';
+import { UserForm, UserTable } from '@/components';
 
 const userRepository = useUserRepository();
 
