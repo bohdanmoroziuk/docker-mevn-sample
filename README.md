@@ -15,3 +15,17 @@
 ├── compose.yaml
 └── ...
 ```
+
+## Available scripts
+
+Start the development container:
+
+```bash
+docker compose up -d
+```
+
+Stop the development container:
+
+```bash
+docker compose down
+```
