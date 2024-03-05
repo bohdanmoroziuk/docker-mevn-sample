@@ -1,31 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 
-import type { User, UserData } from '@/entities';
-import { useUserRepository } from '@/repositories';
+import { useUsersStore } from '@/stores';
 import { UserForm, UserTable } from '@/components';
 
-const userRepository = useUserRepository();
-
-const users = ref<User[]>([]);
-
-const getUsers = async () => {
-  try {
-    users.value = await userRepository.getUsers();
-  } catch (error) {
-    users.value = [];
-    console.error(error);
-  }
-};
-
-const addUser = async (data: UserData) => {
-  try {
-    const user = await userRepository.createUser(data);
-    users.value.push(user);
-  } catch (error) {
-    console.error(error);
-  }
-};
+const { users, getUsers, addUser } = useUsersStore();
 
 onMounted(getUsers);
 </script>
