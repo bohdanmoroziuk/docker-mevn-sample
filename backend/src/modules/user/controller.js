@@ -3,22 +3,22 @@ export class UserController {
     this.userService = userService;
   }
 
-  createUser(request, response) {
+  async createUser(request, response) {
     const { name, age } = request.body;
-    const user = this.userService.addUser(name, age);
+    const user = await this.userService.addUser(name, age);
 
     return response.status(201).json({ user });
   }
 
-  getUsers(_, response) {
-    const users = this.userService.getUsers();
+  async getUsers(_, response) {
+    const users = await this.userService.getUsers();
 
     return response.status(200).json({ users });
   }
 
-  getUser(request, response) {
+  async getUser(request, response) {
     const { id } = request.params;
-    const user = this.userService.getUser(id);
+    const user = await this.userService.getUser(id);
 
     if (user) {
       return response.status(200).json({ user });

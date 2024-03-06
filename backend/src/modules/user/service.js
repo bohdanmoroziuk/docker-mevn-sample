@@ -1,22 +1,26 @@
-import { User } from './entity.js'
-
 export class UserService {
-  constructor() {
-    this.users = [];
+  constructor(userModel, userMapper) {
+    this.userModel = userModel;
+    this.userMapper = userMapper;
   }
 
-  getUsers() {
-    return this.users;
+  async getUsers() {
+    const documents = await this.userModel.find({});
+    const users = this.userMapper.toObjects(documents);
+
+    return users;
   }
 
-  getUser(id) {
-    return this.users.find((user) => user.id === id);
+  async getUser(id) {
+    const document = await this.userModel.findById(id);
+    const user = this.userMapper.toObject(document);
+
+    return user;
   }
 
-  addUser(name, age) {
-    const user = new User(name, age);
-
-    this.users.push(user);
+  async addUser(name, age) {
+    const document = await this.userModel.create({ name, age });
+    const user = this.userMapper.toObject(document);
 
     return user;
   }
