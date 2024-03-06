@@ -21,11 +21,11 @@
 Start the development container:
 
 ```bash
-docker compose up -d
+make start
 ```
 
 Stop the development container:
 
 ```bash
-docker compose down
+make stop
 ```

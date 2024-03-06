@@ -19,3 +19,14 @@ services:
       - /usr/src/app/node_modules
     ports:
       - 3000:3000
+    depends_on:
+      - database
+  database:
+    image: mongo:6
+    volumes:
+     - database:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  database:
