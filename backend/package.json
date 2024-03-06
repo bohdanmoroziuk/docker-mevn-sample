@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Example of Dockerizing MEVN Application: Backend",
   "main": "src/index.js",
   "type": "module",
   "scripts": {

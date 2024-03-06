@@ -1,0 +1,18 @@
+{
+  "name": "docker-mevn-sample",
+  "version": "1.0.0",
+  "description": "Example of Dockerizing MEVN Application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bohdanmoroziuk/docker-mevn-sample.git"
+  },
+  "author": "Bohdan Moroziuk <bogdan7morozyuk@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bohdanmoroziuk/docker-mevn-sample/issues"
+  },
+  "homepage": "https://github.com/bohdanmoroziuk/docker-mevn-sample#readme"
+}
