@@ -8,6 +8,9 @@ export class Database {
 
   async connect() {
     await mongoose.connect(this.uri, this.options);
-    console.log('Database connected');
+  }
+
+  async disconnect() {
+    await mongoose.connection.close();
   }
 }

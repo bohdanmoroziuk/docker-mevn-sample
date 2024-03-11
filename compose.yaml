@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   frontend:
     build:
@@ -7,8 +9,11 @@ services:
       - /usr/src/app/node_modules
     ports:
       - 8080:8080
+    environment:
+      - VITE_API_URL=http://localhost:3000/users
     depends_on:
       - backend
+    restart: always
     stdin_open: true
     tty: true
   backend:
@@ -19,14 +24,18 @@ services:
       - /usr/src/app/node_modules
     ports:
       - 3000:3000
+    environment:
+      - MONGODB_URI=mongodb://database:27017/dev
     depends_on:
       - database
+    restart: always
   database:
     image: mongo:6
     volumes:
      - database:/data/db
     ports:
       - 27017:27017
+    restart: always
 
 volumes:
   database:
