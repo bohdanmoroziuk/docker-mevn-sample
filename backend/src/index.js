@@ -1,7 +1,7 @@
 import app from './app.js';
 import { Database } from './database.js'
 
-const db = new Database('mongodb://database:27017/dev');
+const db = new Database(process.env.MONGODB_URI);
 
 db
   .connect()
