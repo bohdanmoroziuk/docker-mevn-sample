@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 
 export class UserRouter {
   constructor(userController) {
@@ -6,19 +6,11 @@ export class UserRouter {
   }
 
   getRouter() {
-    const router = express.Router();
+    const router = Router();
 
-    router
-      .route('/:id')
-      .get((request, response) => this.userController.getUser(request, response));
-
-    router
-      .route('/')
-      .get((request, response) => this.userController.getUsers(request, response));
-
-    router
-      .route('/')
-      .post((request, response) => this.userController.createUser(request, response));
+    router.get('/', (request, response) => this.userController.getUsers(request, response));
+    router.post('/', (request, response) => this.userController.createUser(request, response));
+    router.get('/:id', (request, response) => this.userController.getUser(request, response));
 
     return router;
   }
