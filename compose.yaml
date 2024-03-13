@@ -10,12 +10,11 @@ services:
     ports:
       - 8080:8080
     environment:
-      - VITE_API_URL=http://localhost:3000/users
+      - VITE_API_URL=/api/users
     depends_on:
       - backend
-    restart: always
+    restart: unless-stopped
     stdin_open: true
-    tty: true
   backend:
     build:
       context: backend
@@ -28,13 +27,22 @@ services:
       - MONGODB_URI=mongodb://database:27017/dev
     depends_on:
       - database
-    restart: always
+    restart: unless-stopped
   database:
     image: mongo:6
     volumes:
      - database:/data/db
     ports:
       - 27017:27017
+    restart: always
+  reverse-proxy:
+    build:
+      context: reverse-proxy
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+      - frontend
     restart: always
 
 volumes:
