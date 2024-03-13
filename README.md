@@ -6,10 +6,13 @@
 
 ```txt
 .
+├── frontend
+│   ├── Dockerfile
+│   └── ...
 ├── backend
 │   ├── Dockerfile
 │   └── ...
-├── frontend
+├── reverse-proxy
 │   ├── Dockerfile
 │   └── ...
 ├── compose.yaml
@@ -29,3 +32,7 @@ Stop the development container:
 ```bash
 make stop
 ```
+
+The frontend is available at http://localhost.
+
+The backend is available at http://localhost/api/users.
